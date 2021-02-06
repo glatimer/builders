@@ -54,8 +54,8 @@ leak_check: clean test
 
 .PHONY: run
 run: clean test
-	time -p ./builders medium.txt > result.txt
-	cmp medium.txt.out result.txt
+	time -p ./builders huge.txt > result.txt
+	cmp huge.txt.out result.txt
 
 clean: 
 	$(RM) test *.o *~D
