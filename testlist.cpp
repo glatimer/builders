@@ -7,7 +7,7 @@ using namespace std;
 
 void printEvent(event e)
 {
-    cout << "Sector: " << e.getSector() << " Structure: " << e.getType() << endl;
+    cout << "Sector: " << e.getSector() << " Structure: " << str(e.getType()) << endl;
 }
 
 void dumpList(linkedlist &ll)
@@ -30,10 +30,10 @@ int main()
     cout << "dump list before adding" << endl;
     dumpList(ll);
     ll.insertFront(e1);
-//    dumpList(ll);
+    dumpList(ll);
     ll.insertFront(e1);
     ll.insertFront(e2);
-//    dumpList(ll);
+    dumpList(ll);
     
     return 0;
 }

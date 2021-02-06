@@ -16,10 +16,11 @@ bool linkedlist::isEmpty() {
 	}
 }
 
-void linkedlist::insertFront(event type) {
+void linkedlist::insertFront(event e) {
 	// initialize new node
-	node *newHead = new node;
-	newHead->type = type;
+	node_l *newHead = new node_l;
+	newHead->type.setSector(e.getSector());
+	newHead->type.setType(e.getType());
 	newHead->next = NULL;
 	newHead->prev = NULL;	
 	// if the list is empty
@@ -27,13 +28,13 @@ void linkedlist::insertFront(event type) {
 		head = newHead;
 		tail = newHead;
 	} else if (head->next == NULL) {
-		node *temp = head;
+		node_l *temp = head;
 		newHead->next = temp;
 		temp->prev = newHead;
 		head = newHead;
 		tail = temp;
 	} else {
-		node *temp = head;
+		node_l *temp = head;
 		newHead->next = temp;
 		temp->prev = newHead;
 		head = newHead;
@@ -41,16 +42,28 @@ void linkedlist::insertFront(event type) {
 }
 
 void linkedlist::removeBack(event &result) {
-	node *temp = tail;
-	tail = tail->prev;
-	tail->next = NULL;
-	result.setSector(temp->type.getSector());
-	result.setType(temp->type.getType());
-	delete temp;
+	node_l *temp = tail;
+	if (head->next == NULL){
+		result.setSector(temp->type.getSector());
+		result.setType(temp->type.getType());
+		delete temp;
+		head = NULL;
+		tail = NULL;
+	} else {
+		tail = tail->prev;
+		tail->next = NULL;
+		result.setSector(temp->type.getSector());
+		result.setType(temp->type.getType());
+		delete temp;
+	}
+}
+
+int linkedlist::get_sector(){
+	return head->type.getSector();
 }
 
 linkedlist::~linkedlist() {
-	node *temp;
+	node_l *temp;
 	while (head != NULL) {
 		temp = head;
 		head = head->next;

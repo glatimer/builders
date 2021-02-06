@@ -5,30 +5,35 @@
 
 using namespace std;
 
-void dumpStack(stack &s)
+// void dumpStack(stack &s)
+void dumpStack(stack s)
 {
     cout << "Dumping the stack" << endl;
     while (!s.isEmpty())
     {
-	const event* result = s.pop();
+	// const event* result = s.pop();
+    event result = s.pop();
 	cout << "Value: ";
-	result->print();
+	result.print();
     }
 }
 
 int main()
 {
-    stack* s = new stack(100);
+    // stack* s = new stack(100);
+    stack s;
     event e1(1,WIND);
     event e2(2,SOLAR);
     event e3(3,WATER);
-    const event* ePtr;
+    // const event* ePtr;
 
-    s->push(e1);
-    dumpStack(*s);
-    s->push(e2);
-    s->push(e3);
-    dumpStack(*s);
+    s.push(e1);
+    // dumpStack(*s);
+    dumpStack(s);
+    s.push(e2);
+    s.push(e3);
+    // dumpStack(*s);
+    dumpStack(s);
 
-    delete s;
+    // delete s;
 }

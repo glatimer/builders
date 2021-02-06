@@ -5,6 +5,7 @@ using namespace std;
 
 event::event() {
 	sector = -1;
+
 }
 
 event::event(int sector_input, structure_type input_structure) {
@@ -21,9 +22,16 @@ void event::setSector(int input_sector) {
 }
 
 structure_type event::getType() {
+	// const char* result = str(structure);
+	// cout << result << endl;
+	// return result;
 	return structure;
 }
 
 void event::setType(structure_type input_structure) {
 	structure = input_structure;
+}
+
+void event::print() {
+	cout << "Building a " << str(structure) << " in sector " << sector << endl;
 }
