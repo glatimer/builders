@@ -9,11 +9,7 @@ linkedlist::linkedlist() { // constructor
 	tail = NULL;
 }
 bool linkedlist::isEmpty() {
-	if (head == NULL) {
-		return true;
-	} else {
-		return false;
-	}
+	return (head == NULL);
 }
 
 void linkedlist::insertFront(event e) {

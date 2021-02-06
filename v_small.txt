@@ -1,0 +1,6 @@
+numbuilders 5
+5 21 solar
+5 21 wind
+2 25 water
+2 25 solar
+2 25 wind
