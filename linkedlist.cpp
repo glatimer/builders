@@ -31,8 +31,7 @@ bool linkedlist::isEmpty() {
 void linkedlist::insertFront(event e) {
 	// initialize new node
 	node_l *newHead = new node_l;
-	newHead->type.setSector(e.getSector());
-	newHead->type.setType(e.getType());
+	newHead->type = e;
 	newHead->next = NULL;
 	newHead->prev = NULL;	
 	// if the list is empty
@@ -56,16 +55,14 @@ void linkedlist::insertFront(event e) {
 void linkedlist::removeBack(event &result) {
 	node_l *temp = tail;
 	if (head->next == NULL){
-		result.setSector(temp->type.getSector());
-		result.setType(temp->type.getType());
+		result = temp->type;
 		delete temp;
 		head = NULL;
 		tail = NULL;
 	} else {
 		tail = tail->prev;
 		tail->next = NULL;
-		result.setSector(temp->type.getSector());
-		result.setType(temp->type.getType());
+		result = temp->type;
 		delete temp;
 	}
 }
