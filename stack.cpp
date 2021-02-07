@@ -5,7 +5,11 @@ using namespace std;
 
 stack::stack(){
 	head = NULL;
-};
+}
+
+stack::stack(const stack &stack_to_copy){
+	head = stack_to_copy.head;
+}
 
 stack::~stack(){
 	node *tmp;
@@ -19,12 +23,11 @@ stack::~stack(){
 
 bool stack::isEmpty(){
 	return (head == NULL);
-};
+}
 
 void stack::push(event e){
 	node *tmp = new node;
-	tmp->build.setSector(e.getSector());
-	tmp->build.setType(e.getType());
+	tmp->build = e;
 	tmp->next = NULL;
 	if (head == NULL) {
 		head = tmp;
@@ -33,16 +36,14 @@ void stack::push(event e){
 		head = tmp;
 	}
 
-};
+}
 
 event stack::pop(){
 	node *tmp;
 	event popped_event;
 	tmp = head;
 	head = tmp->next;
-	popped_event.setType(tmp->build.getType());
-	popped_event.setSector(tmp->build.getSector());
+	popped_event = tmp->build;
 	delete(tmp);
 	return popped_event;
-};
-// int peak();
+}

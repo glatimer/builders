@@ -13,11 +13,12 @@ struct node {
 class stack {
 public:
  	stack();
+ 	stack(const stack &stack_to_copy);
+	void operator = (const stack &stack_to_copy){head = stack_to_copy.head;}
  	~stack();
 	bool isEmpty();	
 	void push(event e);
 	event pop();
-	// int peak();
 private:
 	node *head;
 };

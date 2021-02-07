@@ -8,6 +8,22 @@ linkedlist::linkedlist() { // constructor
 	head = NULL;
 	tail = NULL;
 }
+
+linkedlist::linkedlist(const linkedlist &ll_to_copy){
+	head = ll_to_copy.head;
+	tail = ll_to_copy.tail;
+}
+
+linkedlist::~linkedlist() {
+	node_l *temp;
+	while (head != NULL) {
+		temp = head;
+		head = head->next;
+		delete temp;
+	}
+	delete head;
+}
+
 bool linkedlist::isEmpty() {
 	return (head == NULL);
 }
@@ -53,18 +69,3 @@ void linkedlist::removeBack(event &result) {
 		delete temp;
 	}
 }
-
-int linkedlist::get_sector(){
-	return head->type.getSector();
-}
-
-linkedlist::~linkedlist() {
-	node_l *temp;
-	while (head != NULL) {
-		temp = head;
-		head = head->next;
-		delete temp;
-	}
-	delete head;
-}
-

@@ -5,18 +5,20 @@
 class event {
 public:
 	event();
-	// event(event& obj);
 	event(int input_sector, structure_type input_struct);
-	// ~event();
+	event(const event& event_to_copy);
+	void operator = (const event &event_to_copy){
+		sector = event_to_copy.sector;
+		structure =  event_to_copy.structure;
+	}
 	int getSector();
 	void setSector(int input_sector);
 	structure_type getType();
 	void setType(structure_type input_structure);
-	void print();
+
 private: 
 	int sector;
 	structure_type structure;
 };
-
 
 #endif

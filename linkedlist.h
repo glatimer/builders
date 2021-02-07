@@ -8,21 +8,22 @@ struct node_l {
 	node_l *prev;
 	event type;
 };
-//addRequest() insert item to head of list
-//doCycle() remove node at tail of list
+
 class linkedlist {
 public: 
 	linkedlist(); // constructor
+	linkedlist(const linkedlist &ll_to_copy);
+	void operator = (const linkedlist &ll_to_copy){
+		head = ll_to_copy.head;
+		tail = ll_to_copy.tail;
+	}
+	~linkedlist();
 	bool isEmpty(); // check to see if the list is empty
 	void insertFront(event e); // insert new node as head
 	void removeBack(event &result);
-	int get_sector();
-	~linkedlist();
 
 private: 
 	node_l *head, *tail;
 };
-
-
 
 #endif

@@ -19,9 +19,8 @@ void builder::addRequest(int sector, structure_type to_build) {
 }
 
 bool builder::doCycle() {
-	if (ll.isEmpty()) {
-		return false;
-	} else {
+	bool empty = ll.isEmpty();
+	if (empty == false) {
 		event result;
 		ll.removeBack(result);
 		if (oldest_sector != result.getSector()){
@@ -30,8 +29,8 @@ bool builder::doCycle() {
 		cout << "Builder #" << builder_number << ": Building a " << str(result.getType()) << " in sector " << result.getSector() << endl;
 		s.push(result);
 		oldest_sector = result.getSector();
-		return true;
 	}
+	return !empty;
 }
 
 void builder::returnHome() {

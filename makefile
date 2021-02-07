@@ -3,7 +3,6 @@ DEBUG=-g
 RM=rm -f
 CFLAGS=-g -c -Wall
 
-
 test: builders.o builder.o linkedlist.o structuretype.o event.o stack.o
 	$(CXX) $(DEBUG) builders.o builder.o linkedlist.o structuretype.o event.o stack.o -o builders
 
@@ -12,18 +11,6 @@ builders.o: builders.cpp
 
 builder.o: builder.cpp
 	$(CXX) $(CFLAGS) builder.cpp
-
-# test_stack: teststack.o stack.o structuretype.o event.o
-# 	$(CXX) $(DEBUG) teststack.o stack.o structuretype.o event.o -o teststack
-
-# test_ll: testlist.o linkedlist.o structuretype.o event.o
-# 	$(CXX) $(DEBUG) testlist.o linkedlist.o structuretype.o event.o -o testlist
-
-# teststack.o: teststack.cpp 
-# 	$(CXX) $(CFLAGS) teststack.cpp
-
-# testlist.o: testlist.cpp 
-# 	$(CXX) $(CFLAGS) testlist.cpp
 
 stack.o: stack.cpp
 	$(CXX) $(CFLAGS) stack.cpp
@@ -50,7 +37,7 @@ debug: clean test
 # will only run in docker container (all files in /tmp dir)
 .PHONY: leak_check
 leak_check: clean test
-	valgrind --leak-check=full ./builders medium.txt
+	valgrind --leak-check=full ./builders huge.txt
 
 .PHONY: run
 run: clean test
